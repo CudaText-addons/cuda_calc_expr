@@ -3,7 +3,7 @@ title=Calc Expression
 desc=Gets selected math expression, e.g. "2.4 * sin(pi/3)", calculates it, replaces selection with result
 type=cudatext-plugin
 subdir=cuda_calc_expr
-homepage=
+homepage=https://github.com/CudaText-addons/cuda_calc_expr
 
 [item2]
 section=commands
