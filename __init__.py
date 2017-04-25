@@ -38,6 +38,13 @@ def do_eval(s):
 
 class Command:
     def replace(self):
+        self.do_work('rep')
+
+    def show(self):
+        self.do_work('show')
+
+    def do_work(self, mode):
+
         carets = ed.get_carets()
         if len(carets)>1:
             msg_status('CalcExpr: multi-carets not supported')
@@ -52,12 +59,17 @@ class Command:
             msg_status('CalcExpr: cannot eval')
             return
 
-        #sort coord
-        x0, y0, x1, y1 = carets[0]
-        if (y0, x0)>(y1, x1):
-            x0, y0, x1, y1 = x1, y1, x0, y0
+        if mode=='rep':
+            #sort coord
+            x0, y0, x1, y1 = carets[0]
+            if (y0, x0)>(y1, x1):
+                x0, y0, x1, y1 = x1, y1, x0, y0
 
-        ed.set_caret(x0, y0)
-        ed.delete(x0, y0, x1, y1)
-        ed.insert(x0, y0, s)
-        msg_status('CalcExpr: replaced to "%s"' %s)
+            ed.set_caret(x0, y0)
+            ed.delete(x0, y0, x1, y1)
+            ed.insert(x0, y0, s)
+            msg_status('CalcExpr: replaced to: %s' %s)
+
+        if mode=='show':
+            msg_status('CalcExpr: result: %s' %s)
+

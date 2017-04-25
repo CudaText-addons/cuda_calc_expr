@@ -7,6 +7,10 @@ homepage=
 
 [item2]
 section=commands
-caption=Calc Expression
+caption=Calc Expression\Calc selection, replace
 method=replace
 
+[item3]
+section=commands
+caption=Calc Expression\Calc selection, show in status
+method=show
