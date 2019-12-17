@@ -3,7 +3,8 @@ reads selected text as math expression, e.g. "2.4*sin(pi/3)" and evaluates it by
 tries to use "safe evaluation", without dangerous python functions enabled.
 gives commands (menu Plugins / Calc Expression) to replace selection with number result,
 or just show the result in the statusbar.
-these math functions from Python are supported:
+
+these Python functions are supported:
 
   abs      cosh       frexp      pow
   acos     degrees    hypot      radians
@@ -19,8 +20,9 @@ these math functions from Python are supported:
   mean( [x1, x2, ...] )
   median( [x1, x2, ...] )
 
-details about those functions:
+details:
 https://docs.python.org/3/library/math.html
+https://docs.python.org/3/library/statistics.html
 
 author: Alexey Torgashin (CudaText)
 license: MIT
