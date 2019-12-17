@@ -1,5 +1,6 @@
 import os
 import math
+import statistics
 from cudatext import *
 
 fn_config = os.path.join(app_path(APP_DIR_SETTINGS), 'plugins.ini')
@@ -39,6 +40,9 @@ safe_dict = {
     'abs': abs,
     'min': min,
     'max': max,
+    'sum': sum,
+    'mean': statistics.mean,
+    'median': statistics.median,
     }
 
 def do_eval(s):

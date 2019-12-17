@@ -1,6 +1,6 @@
 
 2019.12.17
-+ added functions: min, max
++ added functions: min, max, sum, mean, median
 + added config file (settings/plugins.ini) with 3 separator options:
     [calc_expression]
     decimal_separator=.

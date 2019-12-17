@@ -5,13 +5,19 @@ gives commands (menu Plugins / Calc Expression) to replace selection with number
 or just show the result in the statusbar.
 these math functions from Python are supported:
 
-  abs      cosh       frexp      pow         min
-  acos     degrees    hypot      radians     max
+  abs      cosh       frexp      pow
+  acos     degrees    hypot      radians
   asin     e          ldexp      sin
   atan     exp        log        sinh
   atan2    fabs       log10      sqrt
   ceil     floor      modf       tan
   cos      fmod       pi         tanh
+
+  min(x1, x2, ...)
+  max(x1, x2, ...)
+  sum( [x1, x2, ...] )
+  mean( [x1, x2, ...] )
+  median( [x1, x2, ...] )
 
 details about those functions:
 https://docs.python.org/3/library/math.html
