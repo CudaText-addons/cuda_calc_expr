@@ -5,8 +5,8 @@ gives commands (menu Plugins / Calc Expression) to replace selection with number
 or just show the result in the statusbar.
 these math functions from Python are supported:
 
-  abs      cosh       frexp      pow
-  acos     degrees    hypot      radians
+  abs      cosh       frexp      pow         min
+  acos     degrees    hypot      radians     max
   asin     e          ldexp      sin
   atan     exp        log        sinh
   atan2    fabs       log10      sqrt

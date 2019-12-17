@@ -1,6 +1,12 @@
 
 2019.12.17
-+ small refactoring
++ added functions: min, max
++ added config file (settings/plugins.ini) with 3 separator options:
+    [calc_expression]
+    decimal_separator=.
+    thousand_separator=
+    list_separator=,
+  list_separator is used in functions with several arguments, e.g. min(), max()    
 
 2017.04.25
 initial
