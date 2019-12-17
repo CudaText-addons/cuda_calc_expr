@@ -33,7 +33,8 @@ safe_dict = {
     }
 
 def do_eval(s):
-    return str(eval(s, {"__builtins__": None}, safe_dict))
+    r = eval(s, {"__builtins__": None}, safe_dict)
+    return str(r)
 
 
 class Command:
@@ -47,7 +48,7 @@ class Command:
 
         carets = ed.get_carets()
         if len(carets)>1:
-            msg_status('CalcExpr: multi-carets not supported')
+            msg_status('[Calc Expression] Multi-carets not supported')
             return
 
         s = ed.get_text_sel()
@@ -56,7 +57,7 @@ class Command:
         try:
             s = do_eval(s)
         except:
-            msg_status('CalcExpr: cannot eval')
+            msg_status('[Calc Expression] Cannot evaluate')
             return
 
         if mode=='rep':
@@ -66,10 +67,8 @@ class Command:
                 x0, y0, x1, y1 = x1, y1, x0, y0
 
             ed.set_caret(x0, y0)
-            ed.delete(x0, y0, x1, y1)
-            ed.insert(x0, y0, s)
-            msg_status('CalcExpr: replaced to: %s' %s)
+            ed.replace(x0, y0, x1, y1, s)
+            msg_status('[Calc Expression] Replaced to: %s' %s)
 
         if mode=='show':
-            msg_status('CalcExpr: result: %s' %s)
-
+            msg_status('[Calc Expression] Result: %s' %s)
