@@ -88,6 +88,7 @@ class Command:
 
         try:
             s = do_eval(s)
+            s = s.replace('.', sep_dec)
         except:
             msg_status('[Calc Expression] Cannot evaluate')
             return
