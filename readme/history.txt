@@ -1,12 +1,8 @@
 
 2019.12.17
 + added functions: min, max, sum, mean, median
-+ added config file (settings/plugins.ini) with 3 separator options:
-    [calc_expression]
-    decimal_separator=.
-    thousand_separator=
-    list_separator=,
-  list_separator is used in functions with several arguments, e.g. min(), max()    
++ added config file with 3 separator options, see readme.txt
++ added menu item "Options / Settings-plugins / Calc Expression / Config"
 
 2017.04.25
 initial

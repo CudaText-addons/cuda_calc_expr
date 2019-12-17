@@ -24,5 +24,17 @@ details:
 https://docs.python.org/3/library/math.html
 https://docs.python.org/3/library/statistics.html
 
+plugin has config file, call menu item "Options / Settings-plugins / Calc Expression / Config".
+it has separator options:
+  [calc_expression]
+  decimal_separator=.
+  thousand_separator=
+  list_separator=,
+
+decimal_separator can be changed to e.g. "," or another.
+thousand_separator can be set to non-empty, it will be skipped by Python anyway.
+list_separator is used in functions with several arguments, e.g. min, max, mean.
+
+
 author: Alexey Torgashin (CudaText)
 license: MIT
