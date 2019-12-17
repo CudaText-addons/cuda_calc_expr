@@ -1,38 +1,25 @@
 plugin for CudaText.
-reads selected math expression, e.g. "2.4*sin(pi/3)" and 
-replaces selection with number result.
-math functions from Python supported:
+reads selected text as math expression, e.g. "2.4*sin(pi/3)" and evaluates it by Python.
+tries to use "safe evaluation", without dangerous python functions enabled.
+gives commands (menu Plugins / Calc Expression) to replace selection with number result,
+or just show the result in the statusbar.
+these math functions from Python are supported:
 
-abs
-acos
-asin
-atan
-atan2
-ceil
-cos
-cosh
-degrees
-e
-exp
-fabs
-floor
-fmod
-frexp
-hypot
-ldexp
-log
-log10
-modf
-pi
-pow
-radians
-sin
-sinh
-sqrt
-tan
-tanh
+  abs           fabs           pi
+  acos          floor          pow
+  asin          fmod           radians
+  atan          frexp          sin
+  atan2         hypot          sinh
+  ceil          ldexp          sqrt
+  cos           log            tan
+  cosh          log10          tanh
+  degrees       modf
+  e
+  exp
 
-details: https://docs.python.org/3/library/math.html
 
-author: Alexey T.
+details about those functions:
+https://docs.python.org/3/library/math.html
+
+author: Alexey Torgashin (CudaText)
 license: MIT
