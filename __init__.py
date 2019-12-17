@@ -1,5 +1,12 @@
+import os
 import math
 from cudatext import *
+
+fn_config = os.path.join(app_path(APP_DIR_SETTINGS), 'plugins.ini')
+fn_section = 'calc_expression'
+sep_dec = '.'
+sep_th = ''
+sep_list = ','
 
 safe_dict = {
     'acos': math.acos,
@@ -30,6 +37,8 @@ safe_dict = {
     'tan': math.tan,
     'tanh': math.tanh,
     'abs': abs,
+    'min': min,
+    'max': max,
     }
 
 def do_eval(s):
@@ -38,6 +47,15 @@ def do_eval(s):
 
 
 class Command:
+
+    def __init__(self):
+        global sep_dec
+        global sep_th
+        global sep_list
+        sep_dec = ini_read(fn_config, fn_section, 'decimal_separator', sep_dec)
+        sep_th = ini_read(fn_config, fn_section, 'thousand_separator', sep_th)
+        sep_list = ini_read(fn_config, fn_section, 'list_separator', sep_list)
+
     def replace(self):
         self.do_work('rep')
 
@@ -53,6 +71,16 @@ class Command:
 
         s = ed.get_text_sel()
         if not s: return
+
+        if sep_dec!='':
+            s = s.replace(sep_dec, chr(1))
+        if sep_th!='':
+            s = s.replace(sep_th, chr(2))
+        if sep_list!='':
+            s = s.replace(sep_list, chr(3))
+        s = s.replace(chr(1), '.')
+        s = s.replace(chr(2), '')
+        s = s.replace(chr(3), ',')
 
         try:
             s = do_eval(s)
@@ -72,3 +100,9 @@ class Command:
 
         if mode=='show':
             msg_status('[Calc Expression] Result: %s' %s)
+
+    def config(self):
+        ini_write(fn_config, fn_section, 'decimal_separator', sep_dec)
+        ini_write(fn_config, fn_section, 'thousand_separator', sep_th)
+        ini_write(fn_config, fn_section, 'list_separator', sep_list)
+        file_open(fn_config)
