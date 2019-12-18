@@ -89,23 +89,26 @@ class Command:
 
         try:
             s = do_eval(s)
-
-            try:
-                n = float(s) # check is it number
-            except:
-                msg_status('[Calc Expression] Not a number result')
-                return
-
-            if sep_th:
-                fmt = '{:'+sep_th+'}'
-                s = fmt.format(n)
-
-            if sep_dec:
-                s = s.replace('.', sep_dec)
-
         except Exception as e:
             msg_status('[Calc Expression] '+str(e))
             return
+
+        try:
+            n = float(s) # check is it number
+        except:
+            msg_status('[Calc Expression] Not a number result')
+            return
+
+        if sep_th:
+            s = '{:,}'.format(n)
+            s = s.replace(',', chr(1))
+
+        if sep_dec:
+            s = s.replace('.', chr(2))
+
+        s = s.replace(chr(1), sep_th)
+        s = s.replace(chr(2), sep_dec)
+
 
         if mode=='rep':
             #sort coord
