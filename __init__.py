@@ -88,7 +88,12 @@ class Command:
 
         try:
             s = do_eval(s)
-            s = s.replace('.', sep_dec)
+            n = float(s) # check is it number
+            if sep_th:
+                fmt = '{:'+sep_th+'}'
+                s = fmt.format(n) 
+            if sep_dec:
+                s = s.replace('.', sep_dec)
         except:
             msg_status('[Calc Expression] Cannot evaluate')
             return
