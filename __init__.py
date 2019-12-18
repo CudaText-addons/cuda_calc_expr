@@ -47,7 +47,8 @@ safe_dict = {
 
 def do_eval(s):
     r = eval(s, {"__builtins__": None}, safe_dict)
-    return str(r)
+    if r:
+        return str(r)
 
 
 class Command:
@@ -88,14 +89,22 @@ class Command:
 
         try:
             s = do_eval(s)
-            n = float(s) # check is it number
+
+            try:
+                n = float(s) # check is it number
+            except:
+                msg_status('[Calc Expression] Not a number result')
+                return
+
             if sep_th:
                 fmt = '{:'+sep_th+'}'
-                s = fmt.format(n) 
+                s = fmt.format(n)
+
             if sep_dec:
                 s = s.replace('.', sep_dec)
-        except:
-            msg_status('[Calc Expression] Cannot evaluate')
+
+        except Exception as e:
+            msg_status('[Calc Expression] '+str(e))
             return
 
         if mode=='rep':
