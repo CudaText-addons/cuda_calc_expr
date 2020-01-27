@@ -8,6 +8,7 @@ fn_section = 'calc_expression'
 sep_dec = '.'
 sep_th = ''
 sep_list = ','
+digits_count = 4
 
 safe_dict = {
     'acos': math.acos,
@@ -57,9 +58,11 @@ class Command:
         global sep_dec
         global sep_th
         global sep_list
+        global digits_count
         sep_dec = ini_read(fn_config, fn_section, 'decimal_separator', sep_dec)
         sep_th = ini_read(fn_config, fn_section, 'thousand_separator', sep_th)
         sep_list = ini_read(fn_config, fn_section, 'list_separator', sep_list)
+        digits_count = int(ini_read(fn_config, fn_section, 'digits_precision', str(digits_count)))
 
     def replace(self):
         self.do_work('rep')
@@ -100,8 +103,14 @@ class Command:
             return
 
         if sep_th:
-            s = '{:,}'.format(n)
+            if digits_count > 0:
+                s = ('{:,.'+str(digits_count)+'f}').format(n)
+            else:
+                s = '{:,}'.format(n)
             s = s.replace(',', chr(1))
+        else:
+            if digits_count > 0:
+                s = ('{:.'+str(digits_count)+'f}').format(n)
 
         if sep_dec:
             s = s.replace('.', chr(2))
@@ -127,4 +136,5 @@ class Command:
         ini_write(fn_config, fn_section, 'decimal_separator', sep_dec)
         ini_write(fn_config, fn_section, 'thousand_separator', sep_th)
         ini_write(fn_config, fn_section, 'list_separator', sep_list)
+        ini_write(fn_config, fn_section, 'digits_precision', str(digits_count))
         file_open(fn_config)
