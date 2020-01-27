@@ -30,10 +30,12 @@ it has separator options:
   decimal_separator=.
   thousand_separator=
   list_separator=,
+  digits_precision=4
 
 decimal_separator can be changed to e.g. "," or another.
 thousand_separator can be set to non-empty, it will be skipped by Python anyway.
 list_separator is used in functions with several arguments, e.g. min, max, mean.
+digits_precision is number of digits after decimal separator, can be 0 to show as is.
 
 
 author: Alexey Torgashin (CudaText)

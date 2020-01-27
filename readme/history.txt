@@ -1,4 +1,7 @@
 
+2020.01.27
++ added option digits_precision
+
 2019.12.17
 + added functions: min, max, sum, mean, median
 + added config file with 3 separator options, see readme.txt
