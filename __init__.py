@@ -2,6 +2,9 @@ import os
 import math
 import statistics
 from cudatext import *
+from cudax_lib import get_translation
+
+_   = get_translation(__file__)  # I18N
 
 fn_config = os.path.join(app_path(APP_DIR_SETTINGS), 'plugins.ini')
 fn_section = 'calc_expression'
@@ -74,7 +77,7 @@ class Command:
 
         carets = ed.get_carets()
         if len(carets)>1:
-            msg_status('[Calc Expression] Multi-carets not supported')
+            msg_status(_('[Calc Expression] Multi-carets not supported'))
             return
 
         s = ed.get_text_sel()
@@ -93,13 +96,13 @@ class Command:
         try:
             s = do_eval(s)
         except Exception as e:
-            msg_status('[Calc Expression] '+str(e))
+            msg_status(_('[Calc Expression] ')+str(e))
             return
 
         try:
             n = float(s) # check is it number
         except:
-            msg_status('[Calc Expression] Not a number result')
+            msg_status(_('[Calc Expression] Not a number result'))
             return
 
         if sep_th:
@@ -127,10 +130,10 @@ class Command:
 
             ed.set_caret(x0, y0)
             ed.replace(x0, y0, x1, y1, s)
-            msg_status('[Calc Expression] Replaced to: %s' %s)
+            msg_status(_('[Calc Expression] Replaced to: %s') %s)
 
         if mode=='show':
-            msg_status('[Calc Expression] Result: %s' %s)
+            msg_status(_('[Calc Expression] Result: %s') %s)
 
     def config(self):
         ini_write(fn_config, fn_section, 'decimal_separator', sep_dec)
