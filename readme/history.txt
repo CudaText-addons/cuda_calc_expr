@@ -1,11 +1,14 @@
 
+2021.01.31
++ add: i18n from Markus
+
 2020.01.27
-+ added option digits_precision
++ add: option digits_precision
 
 2019.12.17
-+ added functions: min, max, sum, mean, median
-+ added config file with 3 separator options, see readme.txt
-+ added menu item "Options / Settings-plugins / Calc Expression / Config"
++ add: functions: min, max, sum, mean, median
++ add: config file with 3 separator options, see readme.txt
++ add: menu item "Options / Settings-plugins / Calc Expression / Config"
 
 2017.04.25
-initial
+initial version
