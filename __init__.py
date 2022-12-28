@@ -11,7 +11,7 @@ fn_section = 'calc_expression'
 sep_dec = '.'
 sep_th = ''
 sep_list = ','
-digits_count = 4
+digits_count = 0
 
 safe_dict = {
     'acos': math.acos,
