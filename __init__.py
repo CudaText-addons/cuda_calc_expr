@@ -145,7 +145,8 @@ class Command:
                 x0, y0, x1, y1 = x1, y1, x0, y0
 
             ed.insert(x1, y1, ' = ' + s)
-            ed.set_sel_rect(x1 + 3, y1, x1 + 3 + len(s), y1)
+            #ed.set_sel_rect(x1 + 3, y1, x1 + 3 + len(s), y1)
+            ed.set_caret(x1 + 3, y1, x1 + 3 + len(s))
             msg_status(_('[Calc Expression] Calculated to: %s') %s)
 
     def config(self):
