@@ -1,6 +1,6 @@
 [info]
 title=Calc Expression
-desc=Gets selected math expression, e.g. "2.4 * sin(pi/3)", calculates it, replaces selection with result
+desc=Gets selected math expression, e.g. "2.4 * sin(pi/3)", calculates it, replaces selection with result (or insert with equal-sign)
 type=cudatext-plugin
 subdir=cuda_calc_expr
 homepage=https://github.com/CudaText-addons/cuda_calc_expr
@@ -17,8 +17,8 @@ method=show
 
 [item4]
 section=commands
-caption=Calc Expression\Calc selection, result with highlighting
-method=res
+caption=Calc Expression\Calc selection, insert selected result
+method=ins_sel
 
 [item10]
 section=commands

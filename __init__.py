@@ -73,8 +73,8 @@ class Command:
     def show(self):
         self.do_work('show')
 
-    def res(self):
-        self.do_work('res')
+    def ins_sel(self):
+        self.do_work('ins_sel')
 
     def do_work(self, mode):
 
@@ -138,7 +138,7 @@ class Command:
         if mode=='show':
             msg_status(_('[Calc Expression] Result: %s') %s)
 
-        if mode=='res':
+        if mode=='ins_sel':
             #sort coord
             x0, y0, x1, y1 = carets[0]
             if (y0, x0)>(y1, x1):
