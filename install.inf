@@ -15,6 +15,11 @@ section=commands
 caption=Calc Expression\Calc selection, show in statusbar
 method=show
 
+[item4]
+section=commands
+caption=Calc Expression\Calc selection, result with highlighting
+method=res
+
 [item10]
 section=commands
 caption=Calc Expression\Config
