@@ -1,5 +1,5 @@
 2024.07.02
-+ add: cmd - result with highlighting
++ add: cmd - insert selected result
 
 2021.01.31
 + add: i18n from Markus
