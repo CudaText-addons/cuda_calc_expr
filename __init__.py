@@ -73,6 +73,9 @@ class Command:
     def show(self):
         self.do_work('show')
 
+    def ins_sel(self):
+        self.do_work('ins_sel')
+
     def do_work(self, mode):
 
         carets = ed.get_carets()
@@ -134,6 +137,17 @@ class Command:
 
         if mode=='show':
             msg_status(_('[Calc Expression] Result: %s') %s)
+
+        if mode=='ins_sel':
+            #sort coord
+            x0, y0, x1, y1 = carets[0]
+            if (y0, x0)>(y1, x1):
+                x0, y0, x1, y1 = x1, y1, x0, y0
+
+            ed.insert(x1, y1, ' = ' + s)
+            #ed.set_sel_rect(x1 + 3, y1, x1 + 3 + len(s), y1)
+            ed.set_caret(x1 + 3, y1, x1 + 3 + len(s), y1)
+            msg_status(_('[Calc Expression] Calculated to: %s') %s)
 
     def config(self):
         ini_write(fn_config, fn_section, 'decimal_separator', sep_dec)
