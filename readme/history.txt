@@ -1,8 +1,8 @@
-2025.05.03
-+ fix: cmd - insert selected result - framing with spaces: 5+5=10, 5 + 5 = 10
+2025.05.04
++ fix: cmd 'insert selected result' makes surrounding of '=' with spaces, if spaces exist in selection: '5+5=10', '5 + 5 = 10'
 
 2024.07.02
-+ add: cmd - insert selected result
++ add: cmd 'insert selected result'
 
 2021.01.31
 + add: i18n from Markus
