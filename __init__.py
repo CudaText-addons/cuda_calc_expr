@@ -139,14 +139,24 @@ class Command:
             msg_status(_('[Calc Expression] Result: %s') %s)
 
         if mode=='ins_sel':
-            #sort coord
             x0, y0, x1, y1 = carets[0]
-            if (y0, x0)>(y1, x1):
+            if (y0, x0) > (y1, x1):
                 x0, y0, x1, y1 = x1, y1, x0, y0
 
-            ed.insert(x1, y1, ' = ' + s)
-            #ed.set_sel_rect(x1 + 3, y1, x1 + 3 + len(s), y1)
-            ed.set_caret(x1 + 3, y1, x1 + 3 + len(s), y1)
+            if ' ' in ed.get_text_sel().strip():
+                equal_sign = ' = '
+                x1 = x1
+                x2 = x1 + 1 + len(s)
+                x1_sel = x1 + 3
+                x2_sel = x2 + 2
+            else:
+                equal_sign = '='
+                x1 = x1
+                x2 = x1 + len(s)
+                x1_sel = x1 + 1
+                x2_sel = x2 + 1
+            ed.insert(x1, y1, equal_sign + s)
+            ed.set_caret(x1_sel, y1, x2_sel, y1)
             msg_status(_('[Calc Expression] Calculated to: %s') %s)
 
     def config(self):
