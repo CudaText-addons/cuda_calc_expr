@@ -95,7 +95,7 @@ class Command:
         s = s.replace(chr(1), '.')
         s = s.replace(chr(2), '')
         s = s.replace(chr(3), ',')
-        s = s.replace('=', '')
+        s = s.rstrip('= ')
 
         try:
             s = do_eval(s)
