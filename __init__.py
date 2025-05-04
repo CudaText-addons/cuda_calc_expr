@@ -95,6 +95,7 @@ class Command:
         s = s.replace(chr(1), '.')
         s = s.replace(chr(2), '')
         s = s.replace(chr(3), ',')
+        s = s.rstrip('= ')
 
         try:
             s = do_eval(s)
@@ -143,20 +144,14 @@ class Command:
             if (y0, x0) > (y1, x1):
                 x0, y0, x1, y1 = x1, y1, x0, y0
 
-            if ' ' in ed.get_text_sel().strip():
-                equal_sign = ' = '
-                x1 = x1
-                x2 = x1 + 1 + len(s)
-                x1_sel = x1 + 3
-                x2_sel = x2 + 2
-            else:
-                equal_sign = '='
-                x1 = x1
-                x2 = x1 + len(s)
-                x1_sel = x1 + 1
-                x2_sel = x2 + 1
-            ed.insert(x1, y1, equal_sign + s)
-            ed.set_caret(x1_sel, y1, x2_sel, y1)
+            text_sel = ed.get_text_sel().replace('=', '').strip()
+            equal_sign = ' = ' if ' ' in text_sel else '='
+            ed.replace(x0, y0, x1, y1, text_sel + equal_sign + s)
+
+            x0_sel = x0 + len(text_sel) + len(equal_sign)
+            x1_sel = x0_sel + len(s)
+            ed.set_caret(x0_sel, y0, x1_sel, y1)
+
             msg_status(_('[Calc Expression] Calculated to: %s') %s)
 
     def config(self):
