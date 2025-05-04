@@ -83,8 +83,10 @@ class Command:
             msg_status(_('[Calc Expression] Multi-carets not supported'))
             return
 
-        s = ed.get_text_sel()
-        if not s: return
+        s_sel = ed.get_text_sel()
+        s = s_sel
+        if not s:
+            return
 
         if sep_dec!='':
             s = s.replace(sep_dec, chr(1))
@@ -144,7 +146,7 @@ class Command:
             if (y0, x0) > (y1, x1):
                 x0, y0, x1, y1 = x1, y1, x0, y0
 
-            text_sel = ed.get_text_sel().replace('=', '').strip()
+            text_sel = s_sel.rstrip('= ').strip()
             equal_sign = ' = ' if ' ' in text_sel else '='
             ed.replace(x0, y0, x1, y1, text_sel + equal_sign + s)
 
