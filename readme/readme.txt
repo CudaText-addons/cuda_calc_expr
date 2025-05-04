@@ -38,5 +38,7 @@ list_separator is used in functions with several arguments, e.g. min, max, mean.
 digits_precision is number of digits after decimal separator, can be 0 to show as is.
 
 
-authors: Alexey Torgashin (CudaText), ildar r. khasanshin (https://github.com/ildarkhasanshin/)
+authors:
+  Alexey Torgashin (CudaText)
+  ildar r. khasanshin (https://github.com/ildarkhasanshin/)
 license: MIT
