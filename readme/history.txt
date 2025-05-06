@@ -1,3 +1,6 @@
+2025.05.06
++ add: in lite-lex Calc auto-calc after insert =
+
 2025.05.04
 + fix: cmd 'insert selected result' makes surrounding of '=' with spaces, if spaces exist in selection: '5+5=10', '5 + 5 = 10'
 

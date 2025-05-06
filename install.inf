@@ -25,3 +25,8 @@ section=commands
 caption=Calc Expression\Config
 method=config
 menu=o
+
+[item101]
+section=events
+events=on_key
+lexers=Calc ^
