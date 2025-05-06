@@ -156,6 +156,9 @@ class Command:
 
             msg_status(_('[Calc Expression] Calculated to: %s') %s)
 
+        if mode=='auto_calc':
+            return s
+
     def config(self):
         ini_write(fn_config, fn_section, 'decimal_separator', sep_dec)
         ini_write(fn_config, fn_section, 'thousand_separator', sep_th)
@@ -169,3 +172,24 @@ class Command:
             ed.set_caret(0, index)
         except:
             pass
+
+    def on_key(self, ed_self, key, state):
+        carets = ed_self.get_carets()
+        #dont support multi-carets
+        if len(carets)>1: return
+
+        if key == 187 and state == '':
+            x0, y0, x1, y1 = carets[0]
+            if (y0, x0) > (y1, x1):
+                x0, y0, x1, y1 = x1, y1, x0, y0
+            len_ = ed_self.get_line_len(y1)
+            ed_self.set_caret(0, y1, len_, y1)
+            text_sel = ed_self.get_text_sel().rstrip('= ').strip()
+            equal_sign = '= ' if ' ' in text_sel else '='
+            res = str(self.do_work('auto_calc'))
+            x1_ = len_ + len(equal_sign)
+            x2_ = len_ + len(equal_sign) + len(res)
+            ed_self.insert(len_, y1, equal_sign + res)
+            ed_self.set_caret(x1_, y1, x2_, y1)
+
+            return False
