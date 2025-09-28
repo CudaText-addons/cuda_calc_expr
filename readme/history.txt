@@ -1,8 +1,11 @@
+2025.09.28
+* fix: replace ":" to "/"" in calculations
+
 2025.05.06
 + add: support automatic calculation in lite lexer 'Calc ^', which is shipped with the plugin
 
 2025.05.04
-+ fix: cmd 'insert selected result' makes surrounding of '=' with spaces, if spaces exist in selection: '5+5=10', '5 + 5 = 10'
+* fix: cmd 'insert selected result' makes surrounding of '=' with spaces, if spaces exist in selection: '5+5=10', '5 + 5 = 10'
 
 2024.07.02
 + add: cmd 'insert selected result'
