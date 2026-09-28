@@ -51,12 +51,12 @@ safe_dict = {
 
 def do_eval(s):
     r = eval(s, {"__builtins__": None}, safe_dict)
+    r = f"{r:g}"
     if r:
         return str(r)
 
 
 class Command:
-
     def __init__(self):
         global sep_dec
         global sep_th
@@ -77,7 +77,6 @@ class Command:
         self.do_work('ins_sel')
 
     def do_work(self, mode):
-
         carets = ed.get_carets()
         if len(carets)>1:
             msg_status(_('[Calc Expression] Multi-carets not supported'))
@@ -98,6 +97,7 @@ class Command:
         s = s.replace(chr(2), '')
         s = s.replace(chr(3), ',')
         s = s.replace(':', '/')
+        s = s.replace('^', '**')
         s = s.rstrip('= ')
 
         try:
@@ -127,7 +127,6 @@ class Command:
 
         s = s.replace(chr(1), sep_th)
         s = s.replace(chr(2), sep_dec)
-
 
         if mode=='rep':
             #sort coord
@@ -176,7 +175,7 @@ class Command:
 
     def on_key(self, ed_self, key, state):
         carets = ed_self.get_carets()
-        #dont support multi-carets
+        # dont support multi-carets
         if len(carets)>1: return
 
         if key == 187 and state == '':
@@ -192,5 +191,21 @@ class Command:
             x2_ = len_ + len(equal_sign) + len(res)
             ed_self.insert(len_, y1, equal_sign + res)
             ed_self.set_caret(x1_, y1, x2_, y1)
+
+            return False
+
+        if key == 40 and state == 'c':
+            x0, y0, x1, y1 = carets[0]
+            if (y0, x0) > (y1, x1):
+                x0, y0, x1, y1 = x1, y1, x0, y0
+            res = ''
+            try:
+                res = ed_self.get_text_line(y1).split('=', 1)[1].strip()
+            except:
+                pass
+            if res:
+                ed_self.insert(0, y1 + 1, "\n")
+                ed_self.insert(0, y1 + 1, res)
+                ed_self.set_caret(len(res), y1+1)
 
             return False
