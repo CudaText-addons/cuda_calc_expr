@@ -179,6 +179,7 @@ class Command:
         # dont support multi-carets
         if len(carets)>1: return
 
+        # NumPad_Plus key don't have a const in cudatext_keys.py
         if key == 187 and state == '':
             x0, y0, x1, y1 = carets[0]
             if (y0, x0) > (y1, x1):
