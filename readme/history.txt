@@ -1,3 +1,6 @@
+2026.10.02
++ add: small refactor, add statusbar err-msg if Ctrl+Down pressed on a line without '=' (by Alexey)
+
 2026.09.23
 + add: power-operator '**' works in the more familiar way using '^' (by @ildarkhasanshin)
 + add: in lite lexer 'Calc ^' after pressing '=' and displaying the result, pressing 'Ctrl+Down' allows for further calculations using that result on next line (by @ildarkhasanshin)
