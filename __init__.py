@@ -198,11 +198,7 @@ class Command:
             x0, y0, x1, y1 = carets[0]
             if (y0, x0) > (y1, x1):
                 x0, y0, x1, y1 = x1, y1, x0, y0
-            res = ''
-            try:
-                res = ed_self.get_text_line(y1).split('=', 1)[1].strip()
-            except:
-                pass
+            res = ed_self.get_text_line(y1).split('=', 1)[1].strip()
             if res:
                 ed_self.insert(0, y1 + 1, "\n")
                 ed_self.insert(0, y1 + 1, res)
