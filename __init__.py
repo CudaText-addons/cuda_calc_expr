@@ -2,6 +2,7 @@ import os
 import math
 import statistics
 from cudatext import *
+from cudatext_keys import *
 from cudax_lib import get_translation
 
 _   = get_translation(__file__)  # I18N
@@ -194,11 +195,16 @@ class Command:
 
             return False
 
-        if key == 40 and state == 'c':
+        # Ctrl+Down
+        if key == VK_DOWN and state == 'c':
             x0, y0, x1, y1 = carets[0]
             if (y0, x0) > (y1, x1):
                 x0, y0, x1, y1 = x1, y1, x0, y0
-            res = ed_self.get_text_line(y1).split('=', 1)[1].strip()
+            s = ed_self.get_text_line(y1)
+            if '=' not in s:
+                msg_status(_('[Calc Expression] Ctrl+Down needs char "=" in a line'))
+                return
+            res = s.split('=', 1)[1].strip()
             if res:
                 ed_self.insert(0, y1 + 1, "\n")
                 ed_self.insert(0, y1 + 1, res)
